@@ -1,20 +1,16 @@
-package com.WeatherService;
+package com.weatherapp.weatherService;
 
 import java.util.List;
 
-
- 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.Repository.WeatherRepository;
-import com.springboot.entity.model.Weather;
-
-import jakarta.transaction.TransactionScoped;
+import com.weatherapp.entity.Weather;
+import com.weatherapp.repository.WeatherRepository;
  
 @Service
-@TransactionScoped
 public class WeatherService {
+	
 	@Autowired
     private WeatherRepository repo;
      

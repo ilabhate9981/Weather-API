@@ -1,18 +1,22 @@
-package com.springboot.entity.model;
+package com.weatherapp.entity;
 
 
 
 
 import java.sql.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 @Entity
 public class Weather {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int Id;
 	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date date;
@@ -20,23 +24,6 @@ public class Weather {
 	private String summary;
 	private int temperatureF;
 	private String city;
-	
-
-	public Weather(int id, Date date, int temperatureC, String summary, int temperatureF, String city) {
-		super();
-		Id = id;
-		this.date = date;
-		this.temperatureC = temperatureC;
-		this.summary = summary;
-		this.temperatureF = temperatureF;
-		this.city = city;
-	}
-	@jakarta.persistence.Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer getId1() {
-        return Id;
-    }
-	
 	public int getId() {
 		return Id;
 	}
@@ -73,5 +60,21 @@ public class Weather {
 	public void setCity(String city) {
 		this.city = city;
 	}
+	public Weather(int id, Date date, int temperatureC, String summary, int temperatureF, String city) {
+		super();
+		Id = id;
+		this.date = date;
+		this.temperatureC = temperatureC;
+		this.summary = summary;
+		this.temperatureF = temperatureF;
+		this.city = city;
+	}
+	public Weather() {
+
+		// TODO Auto-generated constructor stub
+	}
 	
+	
+	
+
 }

@@ -1,4 +1,4 @@
-package com.Controller;
+package com.weatherapp.controller;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.WeatherService.WeatherService;
-import com.springboot.entity.model.Weather;
+import com.weatherapp.entity.Weather;
+import com.weatherapp.weatherService.WeatherService;
  
 
 @RestController
@@ -24,7 +24,7 @@ public class MyController {
     @Autowired
     private WeatherService service;
     
-    @GetMapping("/getweather")
+    @GetMapping("/products")
     public List<Weather> list() {
         return service.listAll();
     }
