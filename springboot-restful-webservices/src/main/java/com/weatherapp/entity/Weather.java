@@ -58,7 +58,7 @@ public class Weather {
 		return city;
 	}
 	public void setCity(String city) {
-		this.city = city;
+		this.city=city;
 	}
 	public Weather(int id, Date date, int temperatureC, String summary, int temperatureF, String city) {
 		super();
@@ -74,7 +74,7 @@ public class Weather {
 		// TODO Auto-generated constructor stub
 	}
 	
+}	
 	
 	
 
-}

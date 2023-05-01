@@ -2,6 +2,7 @@ package com.weatherapp.controller;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,16 +16,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.weatherapp.entity.Weather;
+import com.weatherapp.repository.WeatherRepository;
 import com.weatherapp.weatherService.WeatherService;
  
 
 @RestController
-public class MyController {
+public class WeatherController {
  
     @Autowired
     private WeatherService service;
     
-    @GetMapping("/products")
+   
+    
+    @GetMapping("/getweather")
     public List<Weather> list() {
         return service.listAll();
     }
@@ -40,20 +44,21 @@ public class MyController {
     }
     
     @PostMapping("/weather")
-    public void add(@RequestBody Weather weather) {
-        service.save(weather);
-    }
-    
-    @PutMapping("/weather/{id}")
-    public ResponseEntity<?> update(@RequestBody Weather weather, @PathVariable Integer id) {
-        try {
-        	Weather existWeather = service.get(id);
+    public ResponseEntity<?> addweather(@RequestBody Weather weather) {
+    	try {
+        	
             service.save(weather);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }      
+        }    
+        
     }
+    @PutMapping("/updateweather/{id}")
+    public ResponseEntity<Weather> updateweather(@PathVariable int id, @RequestBody Weather weather) {
+        return service.update(id, weather);
+    }
+  
     
     @DeleteMapping("/weather/{id}")
     public void delete(@PathVariable Integer id) {
